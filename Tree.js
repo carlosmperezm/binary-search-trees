@@ -10,11 +10,12 @@ class Node {
   }
 }
 
-class Tree {
+export class Tree {
   root;
 
   constructor(array) {
     this.root = this.buildTree(array);
+    // console.log(this.#createSubTree(array, 0, array.length - 1))
 
   }
 
@@ -38,7 +39,22 @@ class Tree {
   isBalanced() { }
   rebalance() { }
 
-  #createSubTree(array, left, right) {
-    // Recursive function that creates the trees
+  #createSubTree(sortedArray, start, end) {
+    // Recursive function that creates the trees.
+    // Array must be sorted and with no duplicated values
+
+    // Base case to stop the recursion
+    if (start > end) return null;
+    // The middle of the sorted array will be the root node; 
+    const middleIndex = Math.floor((start + end) / 2);
+    // Call recursively to get the left and right Nodes
+    const leftNode = this.#createSubTree(sortedArray, start, middleIndex - 1);
+    const rightNode = this.#createSubTree(sortedArray, middleIndex + 1, end);
+
+    const rootNode = new Node(sortedArray[middleIndex]);
+    rootNode.left = leftNode;
+    rootNode.right = rightNode;
+
+    return rootNode;
   }
 }
