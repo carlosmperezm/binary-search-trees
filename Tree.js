@@ -34,8 +34,30 @@ export class Tree {
     return rootNode;
   }
 
-  insert(value) { }
-  delete(value) { }
+  insert(value) {
+    let node = this.root;
+    let previousNode;
+    let nextNodePosition = '';
+    while (node) {
+      // Iterate until find a leaf to place the new node
+      previousNode = node;
+      // If the value already exits do nothing
+      if (value === node.value) return;
+      if (value > node.value) {
+        // Go to the right
+        node = node.right;
+        nextNodePosition = 'right';
+      } else {
+        // Go to the left
+        node = node.left;
+        nextNodePosition = 'left';
+      }
+    }
+    // After a spot to place the node has been found
+    const newNode = new Node(value);
+    previousNode[nextNodePosition] = newNode;
+  }
+  deleteItem(value) { }
   find(value) { }
   levelOrder(callback) { }
   inOrder(callback) { }
