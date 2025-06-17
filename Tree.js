@@ -21,7 +21,7 @@ export class Tree {
     /**
      * Build a balanced binary tree and returns the root node
      * @param array The array to build the tree from
-    */
+     */
 
     // Sort the array
     const sortedArray = array.sort();
@@ -63,6 +63,7 @@ export class Tree {
   find(value) {
     /*
      * Returns the node with the given value.
+     * Returns the node if exits, otherwise null.
      */
     let node = this.root;
     while (node) {
