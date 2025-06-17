@@ -7,3 +7,4 @@ const array = [1, 1, 1, 2, 7, 7, 2, 4, 4, 2, 3];
 const tree = new Tree(array);
 
 tree.insert(8);
+console.log(tree.find(8))

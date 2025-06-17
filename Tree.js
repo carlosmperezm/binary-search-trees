@@ -57,8 +57,29 @@ export class Tree {
     const newNode = new Node(value);
     previousNode[nextNodePosition] = newNode;
   }
+
   deleteItem(value) { }
-  find(value) { }
+
+  find(value) {
+    /*
+     * Returns the node with the given value.
+     */
+    let node = this.root;
+    while (node) {
+      // Iterate until find the node
+      // If the value already exits return it
+      if (value === node.value) return node;
+      // Else move to the left or right 
+      if (value > node.value) {
+        // Go to the right
+        node = node.right;
+      } else {
+        // Go to the left
+        node = node.left;
+      }
+    }
+    return null;
+  }
   levelOrder(callback) { }
   inOrder(callback) { }
   preOrder(callback) { }
