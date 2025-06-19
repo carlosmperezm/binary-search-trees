@@ -58,7 +58,59 @@ export class Tree {
     previousNode[nextNodePosition] = newNode;
   }
 
-  deleteItem(value) { }
+  deleteItem(value) {
+    let node = this.root;
+    let previousNode;
+    let nextNodePosition = '';
+    // Otherwise find the node
+    while (node) {
+      if (node.value === value) {
+        // If the value is found stop the looking further
+        break;
+      }
+      previousNode = node;
+      if (value > node.value) {
+        // Go to the right
+        node = node.right;
+        nextNodePosition = 'right';
+      } else {
+        // Go to the left
+        node = node.left;
+        nextNodePosition = 'left';
+      }
+    }
+    // After node was found
+    if (!node.right && !node.left) {
+      // Check if the node has no children and then remove it
+      previousNode[nextNodePosition] = null;
+    }
+    if (node.right && node.left) {
+      // Check if the node has both children 
+      let farthestLeftNode = node.right;
+      while (farthestLeftNode.left) {
+        // Find the farthest left node
+        farthestLeftNode = farthestLeftNode.left;
+      }
+      if (farthestLeftNode.right) {
+        // Check if the left furthest node has child.
+        // Delete that node with this same function so that it will
+        // take care of all the process of ordering the nodes
+        this.deleteItem(farthestLeftNode.value);
+      }
+      // After the furthest node has been deleted,
+      // change the value of the node to delete,
+      // for the value of the furthest left node.
+      node.value = farthestLeftNode.value
+    }
+    if (node.right && !node.left) {
+      //Remove the node when it has just one child in the right
+      previousNode[nextNodePosition] = node.right
+    }
+    if (node.left && !node.right) {
+      //Remove the node when it has just one child in the left
+      previousNode[nextNodePosition] = node.left;
+    }
+  }
 
   find(value) {
     /*
