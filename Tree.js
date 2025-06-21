@@ -133,7 +133,21 @@ export class Tree {
     }
     return null;
   }
-  levelOrder(callback) { }
+  levelOrder(callback) {
+    /**
+     * Apply the callback function in level order level to each node of the tree
+     * @param callback a function to apply to each node of the tree
+     */
+    if (!callback) throw new Error('Callback is required');
+    if (!this.root) return;
+    const nodesToVisit = [this.root];
+    while (nodesToVisit.length > 0) {
+      let node = nodesToVisit.shift();
+      if (node.left) { nodesToVisit.push(node.left) }
+      if (node.right) { nodesToVisit.push(node.right) }
+      callback(node);
+    }
+  }
   inOrder(callback) { }
   preOrder(callback) { }
   postOrder(callback) { }
