@@ -189,7 +189,31 @@ export class Tree {
     callback(root);
 
   }
-  height(value) { }
+  height(value) {
+    /**
+     * Retuns the number of edges in the longest path
+     * from that node to a leaf node.
+     * @param value the node where get the height of.
+     */
+    const node = this.find(value);
+    // If no value is found means there is no such node
+    if (!node) { return null }
+
+    let leftSubTreeHeight = 0;
+    let rightSubTreeHeight = 0;
+
+    if (node.left) {
+      leftSubTreeHeight = this.height(node.left.value);
+    }
+    if (node.right) {
+      rightSubTreeHeight = this.height(node.right.value);
+    }
+    // If it is a leaf node
+    if (!node.left && !node.right) { return -1; }
+
+    // Get the biggest of the heights and add 1 to it
+    return 1 + Math.max(leftSubTreeHeight, rightSubTreeHeight);
+  }
   depth(value) { }
   isBalanced() { }
   rebalance() { }
