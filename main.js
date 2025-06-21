@@ -12,3 +12,4 @@ tree.insert(8);
 // tree.levelOrder(console.log);
 // tree.preOrder(console.log)
 // tree.inOrder(console.log)
+// tree.postOrder(console.log)

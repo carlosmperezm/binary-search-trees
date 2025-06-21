@@ -175,7 +175,20 @@ export class Tree {
     this.preOrder(callback, root.left)
     this.preOrder(callback, root.right)
   }
-  postOrder(callback) { }
+  postOrder(callback, root = this.root) {
+    /**
+     * Apply the callback function to the left subtree, then to the right subtree
+     * and then to the root.
+     * @param callback a function to apply to each node of the tree.
+     */
+    if (!callback) throw new Error('Callback is required');
+    if (!root) return;
+
+    this.preOrder(callback, root.left)
+    this.preOrder(callback, root.right)
+    callback(root);
+
+  }
   height(value) { }
   depth(value) { }
   isBalanced() { }
