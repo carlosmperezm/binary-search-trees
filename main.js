@@ -6,7 +6,8 @@ const array = [1, 1, 1, 2, 7, 7, 2, 4, 4, 2, 3];
 // const array = [1, 2, 3, 4, 5, 6, 7]
 const tree = new Tree(array);
 
-// tree.insert(8);
+tree.insert(8);
 // console.log(tree.find(8))
 // tree.deleteItem(3)
 // tree.levelOrder(console.log);
+// tree.preOrder(console.log)
