@@ -11,3 +11,4 @@ tree.insert(8);
 // tree.deleteItem(3)
 // tree.levelOrder(console.log);
 // tree.preOrder(console.log)
+// tree.inOrder(console.log)
