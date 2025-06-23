@@ -31,3 +31,4 @@ tree.insert(5);
 // tree.postOrder(prettyPrint)
 // console.log(tree.height(7))
 // prettyPrint(tree.root);
+// console.log(tree.depth(6))

@@ -214,7 +214,26 @@ export class Tree {
     // Get the biggest of the heights and add 1 to it
     return 1 + Math.max(leftSubTreeHeight, rightSubTreeHeight);
   }
-  depth(value) { }
+  depth(value) {
+    /**
+     * Returns the number of edges in the path from the node to the root node.
+     * @param value the node where get the depth of
+     */
+    let node = this.root;
+    let depthCounter = 0;
+    try {
+      while (value !== node.value) {
+        // Decide where to look for the next node
+        // left or right.
+        node = value < node.value ? node.left : node.right;
+        depthCounter += 1;
+      }
+    } catch (TypeError) {
+      // Node doesn't exits
+      return null;
+    }
+    return depthCounter;
+  }
   isBalanced() { }
   rebalance() { }
 
