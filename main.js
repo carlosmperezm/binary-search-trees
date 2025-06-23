@@ -14,15 +14,15 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 };
 
 // const array = [1, 2, 3, 4, 5, 6, 7]
-const array = [1, 1, 1, 2, 7, 7, 2, 4, 4, 2, 3];
+const array = [12, 1, 1, 2, 7, 7, 2, 4, 4, 2, 3];
 // const array = [1, 2, 3, 4, 5, 6, 7]
 // const array = [1, 2, 3, 4, 5, 6, 7]
 const tree = new Tree(array);
 
-tree.insert(12);
+// tree.insert(12);
 tree.insert(6);
-// tree.insert(5);
-prettyPrint(tree.root);
+tree.insert(5);
+// prettyPrint(tree.root);
 // prettyPrint(tree.find(7))
 // tree.deleteItem(3)
 // tree.levelOrder(console.log);
@@ -32,4 +32,7 @@ prettyPrint(tree.root);
 // console.log(tree.height(7))
 // prettyPrint(tree.root);
 // console.log(tree.depth(6))
-console.log(tree.isBalanced());
+// console.log(tree.isBalanced());
+tree.rebalance();
+// console.log(tree.root)
+// prettyPrint(tree.root);

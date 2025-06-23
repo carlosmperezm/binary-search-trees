@@ -24,12 +24,12 @@ export class Tree {
      */
 
     // Sort the array
-    const sortedArray = array.sort();
+    const sortedArray = array.sort((a, b) => a - b);
     const cleanedArray = sortedArray.filter((value, index, array) => {
       // Remove duplicated value
       return value !== array[index - 1];
-    })
-    // Create a function createTree(array,left,right) that will create the whole tree
+    });
+    // Create the tree based on the cleaned array
     const rootNode = this.#createTree(cleanedArray, 0, cleanedArray.length - 1);
     return rootNode;
   }
@@ -267,7 +267,17 @@ export class Tree {
     // If no subtree returned false that means the whole tree is balanced
     return true;
   }
-  rebalance() { }
+  rebalance() {
+    /*
+     * Create a new tree that is balanced
+     */
+    const nodes = [];
+    // Push each node into the list
+    this.levelOrder(node => nodes.push(node.value));
+    // Substitute the old tree for a new one created from 
+    // the new array
+    this.root = new Tree(nodes).root;
+  }
 
   #createTree(sortedArray, start, end) {
     /**
