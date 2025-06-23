@@ -21,8 +21,8 @@ const tree = new Tree(array);
 
 tree.insert(12);
 tree.insert(6);
-tree.insert(5);
-// prettyPrint(tree.root);
+// tree.insert(5);
+prettyPrint(tree.root);
 // prettyPrint(tree.find(7))
 // tree.deleteItem(3)
 // tree.levelOrder(console.log);
@@ -32,3 +32,4 @@ tree.insert(5);
 // console.log(tree.height(7))
 // prettyPrint(tree.root);
 // console.log(tree.depth(6))
+console.log(tree.isBalanced());

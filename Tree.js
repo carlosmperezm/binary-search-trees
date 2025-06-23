@@ -234,7 +234,39 @@ export class Tree {
     }
     return depthCounter;
   }
-  isBalanced() { }
+  isBalanced() {
+    /**
+     * Check if the tree is balanced
+     */
+    const nodesToVisit = [this.root];
+    // Visit the nodes in level order
+    while (nodesToVisit.length > 0) {
+      let node = nodesToVisit.shift();
+      // Default values in case no left or right tree exist
+      let leftHeight = 0;
+      let rightHeight = 0;
+
+      if (node.left) {
+        // If left subtree exits get its height and 
+        // add the node to the list
+        leftHeight = this.height(node.left.value);
+        nodesToVisit.push(node.left)
+      }
+      if (node.right) {
+        // If right subtree exits get its height and 
+        // add the node to the list
+        rightHeight = this.height(node.right.value);
+        nodesToVisit.push(node.right);
+      }
+      let heightDifference = Math.abs(leftHeight - rightHeight);
+      if (heightDifference > 1) { return false; }
+      // After checking if the this subtree is balanced,
+      // move on to the next node in the list to check if 
+      // its subtrees are balanced too
+    }
+    // If no subtree returned false that means the whole tree is balanced
+    return true;
+  }
   rebalance() { }
 
   #createTree(sortedArray, start, end) {
