@@ -30,9 +30,10 @@ tree.insert(5);
 // tree.inOrder(prettyPrint)
 // tree.postOrder(prettyPrint)
 // console.log(tree.height(7))
-// prettyPrint(tree.root);
+prettyPrint(tree.root);
 // console.log(tree.depth(6))
-// console.log(tree.isBalanced());
+console.log(tree.isBalanced());
 tree.rebalance();
 // console.log(tree.root)
-// prettyPrint(tree.root);
+prettyPrint(tree.root);
+console.log(tree.isBalanced());
