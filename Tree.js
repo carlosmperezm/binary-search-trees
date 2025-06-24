@@ -209,7 +209,7 @@ export class Tree {
       rightSubTreeHeight = this.height(node.right.value);
     }
     // If it is a leaf node
-    if (!node.left && !node.right) { return -1; }
+    if (!node.left && !node.right) { return 1; }
 
     // Get the biggest of the heights and add 1 to it
     return 1 + Math.max(leftSubTreeHeight, rightSubTreeHeight);
